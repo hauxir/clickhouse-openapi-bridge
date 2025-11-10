@@ -1,0 +1,68 @@
+[project]
+name = "clickhouse-openapi-bridge"
+version = "1.0.0"
+description = "OpenAPI-compliant bridge for querying ClickHouse databases"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.109.0",
+    "uvicorn[standard]==0.27.0",
+    "httpx==0.26.0",
+    "python-dotenv==1.0.0",
+    "pydantic==2.5.3",
+    "pydantic-settings==2.1.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.8.0",
+]
+
+[tool.ruff]
+# Set the maximum line length
+line-length = 100
+
+# Target Python 3.11+
+target-version = "py311"
+
+# Enable specific rule sets
+lint.select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "TCH", # flake8-type-checking
+]
+
+# Ignore specific rules
+lint.ignore = [
+    "E501",  # Line too long (handled by formatter)
+]
+
+# Exclude common directories
+extend-exclude = [
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".git",
+    "dist",
+    "build",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Allow unused imports in __init__.py files
+"__init__.py" = ["F401"]
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+
+# Indent with spaces
+indent-style = "space"
+
+# Format docstrings
+docstring-code-format = true
