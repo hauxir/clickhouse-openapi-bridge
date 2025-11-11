@@ -2,6 +2,19 @@
 
 An OpenAPI-compliant HTTP bridge for querying ClickHouse databases. This lightweight FastAPI service provides a secure, authenticated REST API interface to execute SQL queries against ClickHouse.
 
+**Query your ClickHouse data warehouse using natural language via ChatGPT custom GPTs.**
+
+## Using with ChatGPT Custom GPTs
+
+You can query your ClickHouse database using natural language through a ChatGPT custom GPT:
+
+1. Create a custom GPT at [chat.openai.com/gpts/editor](https://chat.openai.com/gpts/editor)
+2. Add a new action and point it to your bridge's OpenAPI schema: `http://your-bridge-url/openapi.json`
+3. Configure Bearer token authentication with your `API_BEARER_TOKEN`
+4. Start asking questions about your data in natural language
+
+ChatGPT will translate your questions into SQL queries and execute them against ClickHouse.
+
 ## Features
 
 - **OpenAPI/Swagger Documentation**: Auto-generated API documentation at `/docs`
