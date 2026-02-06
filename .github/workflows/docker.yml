@@ -17,8 +17,14 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Get short SHA
+      id: sha
+      run: echo "short=$(echo ${{ github.sha }} | cut -c1-6)" >> $GITHUB_OUTPUT
+
     - uses: docker/build-push-action@v5
       with:
         context: .
         push: ${{ github.ref == 'refs/heads/master' }}
-        tags: ghcr.io/${{ github.repository }}:latest
+        tags: |
+          ghcr.io/${{ github.repository }}:latest
+          ghcr.io/${{ github.repository }}:${{ steps.sha.outputs.short }}
